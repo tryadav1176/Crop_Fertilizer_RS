@@ -56,5 +56,3 @@ Output:
 
 Displays recommendations with insights and reasoning behind the suggestions.
 
-Clone the repository:
-git clone
