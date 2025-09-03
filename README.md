@@ -48,7 +48,7 @@ Based on the input, the system predicts the best crop and fertilizer combination
 Open a terminal or command prompt on your system.
 Run the following command to clone the repository:
 
-git clone https://github.com/samparadox08/Crop_Fertilizer_RS.git
+git clone https://github.com/tryadav1176/Crop_Fertilizer_RS.git
 
 ## Navigate to the cloned repository directory:
 
