@@ -81,9 +81,9 @@ This project is licensed under the MIT License.
 
 Tejas Yadav
 
-Email:
-📧 [tryadav0812@gmail.com]
+📧 Email:
+[tryadav0812@gmail.com]
 
-Linkedin:
-🔗 [Tejas Yadav](linkedin.com/tejasyadav1512)
+🔗 Linkedin:
+[Tejas Yadav](linkedin.com/tejasyadav1512)
 
