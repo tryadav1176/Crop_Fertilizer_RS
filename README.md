@@ -62,13 +62,27 @@ git clone https://github.com/tryadav1176/Crop_Fertilizer_RS.git
 ```bash
 cd Crop_Fertilizer_RS
 ```
+### Create a virtual environment
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+Windows: venv\Scripts\activate
+
+Linux/Mac: source venv/bin/activate
 ### Open the file folder in terminal & run the Flask app file:
 
 ```bash
 python app.py
 ```
+### Install dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### 5️⃣ Access the application
+### Access the application
 
 Open your browser and visit:
 👉 [http://127.0.0.1:5000/]
