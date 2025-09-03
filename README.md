@@ -47,16 +47,23 @@ Based on the input, the system predicts the best crop and fertilizer combination
 ## Clone the Repository:
 Open a terminal or command prompt on your system.
 Run the following command to clone the repository:
-
+```bash
 git clone https://github.com/tryadav1176/Crop_Fertilizer_RS.git
-
+```
 ## Navigate to the cloned repository directory:
-
+```bash
 cd Crop_Fertilizer_RS
+```
+## Open the file folder in terminal & run the Flask app file:
 
-## Open the file folder in terminal & run the python file:
+```bash
+python app.py
+```
 
-python app.py 
+## 5️⃣ Access the application
+
+Open your browser and visit:
+👉 [http://127.0.0.1:5000/]
 
 ## Output:
 
@@ -73,6 +80,10 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Author
 
 Tejas Yadav
+
+Email:
 📧 [tryadav0812@gmail.com]
-🔗 [linkedin.com/tejasyadav1512]
+
+Linkedin:
+🔗 [Tejas Yadav](linkedin.com/tejasyadav1512)
 
