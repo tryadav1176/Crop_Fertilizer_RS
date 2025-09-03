@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop & Fertilizer Recommendation</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #2c3e50; }
+        form { background: #fff; padding: 20px; margin: 20px auto; width: 50%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+        input, select { margin: 10px 0; padding: 10px; width: 100%; border: 1px solid #ccc; border-radius: 5px; }
+        button { background: #27ae60; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background: #219150; }
+        .result { margin: 20px auto; width: 50%; padding: 15px; background: #eafbea; border-left: 5px solid #27ae60; }
+    </style>
+</head>
+<body>
+
+    <h1>🌱 Crop & Fertilizer Recommendation System</h1>
+
+    <!-- Crop Recommendation Form -->
+    <form method="post" action="/predict_crop">
+        <h2>🌾 Crop Recommendation</h2>
+        <input type="number" name="N" placeholder="Nitrogen (N)" required>
+        <input type="number" name="P" placeholder="Phosphorus (P)" required>
+        <input type="number" name="K" placeholder="Potassium (K)" required>
+        <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
+        <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
+        <input type="number" step="any" name="ph" placeholder="pH" required>
+        <input type="number" step="any" name="rain" placeholder="Rainfall (mm)" required>
+        <button type="submit">Predict Crop</button>
+    </form>
+
+    {% if crop_result %}
+    <div class="result">
+        <strong>Result:</strong> {{ crop_result }}
+    </div>
+    {% endif %}
+
+    <!-- Fertilizer Recommendation Form -->
+    <form method="post" action="/predict_fertilizer">
+        <h2>🧪 Fertilizer Recommendation</h2>
+        <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
+        <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
+        <input type="number" step="any" name="mois" placeholder="Moisture (%)" required>
+        <input type="number" name="soil" placeholder="Soil Type (Encoded)" required>
+        <input type="number" name="crop" placeholder="Crop Type (Encoded)" required>
+        <input type="number" name="N" placeholder="Nitrogen (N)" required>
+        <input type="number" name="K" placeholder="Potassium (K)" required>
+        <input type="number" name="P" placeholder="Phosphorus (P)" required>
+        <button type="submit">Predict Fertilizer</button>
+    </form>
+
+    {% if fert_result %}
+    <div class="result">
+        <strong>Result:</strong> {{ fert_result }}
+    </div>
+    {% endif %}
+
+</body>
+</html>
