@@ -58,7 +58,21 @@ cd Crop_Fertilizer_RS
 
 python app.py 
 
-### Output:
+## Output:
 
 Displays recommendations with insights and reasoning behind the suggestions.
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to fork this repo and submit a pull request.
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+## 👨‍💻 Author
+
+Tejas Yadav
+📧 [tryadav0812@gmail.com]
+🔗 [linkedin.com/tejasyadav1512]
 
