@@ -54,6 +54,10 @@ git clone https://github.com/tryadav1176/Crop_Fertilizer_RS.git
 
 cd Crop_Fertilizer_RS
 
+## Open the file folder in terminal & run the python file:
+
+python app.py 
+
 ### Output:
 
 Displays recommendations with insights and reasoning behind the suggestions.
