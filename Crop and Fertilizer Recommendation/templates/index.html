@@ -30,13 +30,14 @@
             opacity: 0.9;
         }
 
-        /* CARD LAYOUT */
+        /* CONTAINER */
         .container {
             width: 90%;
             max-width: 900px;
             margin: 30px auto;
         }
 
+        /* CARD */
         .card {
             background: white;
             padding: 25px;
@@ -50,18 +51,30 @@
             margin-bottom: 15px;
         }
 
+        /* PROPER FORM GRID */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Full width for last field & button */
+        .form-grid input.full,
+        .form-grid button.full {
+            grid-column: span 2;
+        }
+
         input, select {
             width: 100%;
             padding: 12px;
-            margin: 10px 0;
             border-radius: 8px;
             border: 1px solid #ccc;
             font-size: 14px;
+            box-sizing: border-box;
         }
 
         button {
-            width: 100%;
-            padding: 12px;
+            padding: 14px;
             background: #27ae60;
             border: none;
             border-radius: 8px;
@@ -69,6 +82,7 @@
             font-weight: bold;
             font-size: 15px;
             cursor: pointer;
+            width: 100%;
         }
 
         button:hover {
@@ -84,6 +98,17 @@
             margin-top: 10px;
         }
 
+        /* Mobile Fix */
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-grid input.full,
+            .form-grid button.full {
+                grid-column: span 1;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -91,7 +116,7 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <h1>🌱 Crop & Fertilizer Recommendation System</h1>
-        <p>Get accurate agricultural predictions using machine learning to improve farming efficiency and yield.</p>
+        <p>Accurate ML-powered predictions to improve your farming decisions.</p>
     </section>
 
     <div class="container">
@@ -99,15 +124,23 @@
         <!-- Crop Recommendation Card -->
         <div class="card">
             <h2>🌾 Crop Recommendation</h2>
+
             <form method="post" action="/predict_crop">
-                <input type="number" name="N" placeholder="Nitrogen (N)" required>
-                <input type="number" name="P" placeholder="Phosphorus (P)" required>
-                <input type="number" name="K" placeholder="Potassium (K)" required>
-                <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
-                <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
-                <input type="number" step="any" name="ph" placeholder="Soil pH Value" required>
-                <input type="number" step="any" name="rain" placeholder="Rainfall (mm)" required>
-                <button type="submit">Predict Crop</button>
+                <div class="form-grid">
+
+                    <input type="number" name="N" placeholder="Nitrogen (N)" required>
+                    <input type="number" name="P" placeholder="Phosphorus (P)" required>
+
+                    <input type="number" name="K" placeholder="Potassium (K)" required>
+                    <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
+
+                    <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
+                    <input type="number" step="any" name="ph" placeholder="Soil pH" required>
+
+                    <input type="number" step="any" name="rain" placeholder="Rainfall (mm)" class="full" required>
+
+                    <button type="submit" class="full">Predict Crop</button>
+                </div>
             </form>
 
             {% if crop_result %}
@@ -120,16 +153,24 @@
         <!-- Fertilizer Recommendation Card -->
         <div class="card">
             <h2>🧪 Fertilizer Recommendation</h2>
+
             <form method="post" action="/predict_fertilizer">
-                <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
-                <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
-                <input type="number" step="any" name="mois" placeholder="Moisture (%)" required>
-                <input type="number" name="soil" placeholder="Soil Type (Encoded)" required>
-                <input type="number" name="crop" placeholder="Crop Type (Encoded)" required>
-                <input type="number" name="N" placeholder="Nitrogen (N)" required>
-                <input type="number" name="K" placeholder="Potassium (K)" required>
-                <input type="number" name="P" placeholder="Phosphorus (P)" required>
-                <button type="submit">Predict Fertilizer</button>
+                <div class="form-grid">
+
+                    <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
+                    <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
+
+                    <input type="number" step="any" name="mois" placeholder="Moisture (%)" required>
+                    <input type="number" name="soil" placeholder="Soil Type (Encoded)" required>
+
+                    <input type="number" name="crop" placeholder="Crop Type (Encoded)" required>
+                    <input type="number" name="N" placeholder="Nitrogen (N)" required>
+
+                    <input type="number" name="P" placeholder="Phosphorus (P)" required>
+                    <input type="number" name="K" placeholder="Potassium (K)" required>
+
+                    <button type="submit" class="full">Predict Fertilizer</button>
+                </div>
             </form>
 
             {% if fert_result %}
