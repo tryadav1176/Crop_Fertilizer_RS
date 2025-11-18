@@ -3,59 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop & Fertilizer Recommendation</title>
+    <title>Crop & Fertilizer Recommendation System</title>
+
     <style>
-        body { font-family: Arial, sans-serif; background: #f4f4f9; margin: 0; padding: 20px;}
-        h1 { text-align: center; color: #2c3e50; }
-        form { background: #fff; padding: 20px; margin: 20px auto; width: 50%; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-        input, select { margin: 10px 0; padding: 10px; width: 97%; border: 1px solid #ccc; border-radius: 5px; }
-        button { background: #27ae60; color: #fff; margin-top: 10px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background: #219150; }
-        .result { margin: 20px auto; width: 50%; padding: 15px; background: #eafbea; border-left: 5px solid #27ae60; }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f7;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(to right, #2ecc71, #27ae60);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* CARD LAYOUT */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #27ae60;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e874c;
+        }
+
+        /* RESULT BOX */
+        .result {
+            padding: 15px;
+            background: #eafbea;
+            border-left: 6px solid #27ae60;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
     </style>
 </head>
 <body>
 
-    <h1>🌱 Crop & Fertilizer Recommendation System</h1>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>🌱 Crop & Fertilizer Recommendation System</h1>
+        <p>Get accurate agricultural predictions using machine learning to improve farming efficiency and yield.</p>
+    </section>
 
-    <!-- Crop Recommendation Form -->
-    <form method="post" action="/predict_crop">
-        <h2>🌾 Crop Recommendation</h2>
-        <input type="number" name="N" placeholder="Nitrogen (N)" required>
-        <input type="number" name="P" placeholder="Phosphorus (P)" required>
-        <input type="number" name="K" placeholder="Potassium (K)" required>
-        <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
-        <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
-        <input type="number" step="any" name="ph" placeholder="pH" required>
-        <input type="number" step="any" name="rain" placeholder="Rainfall (mm)" required><br>
-        <button type="submit">Predict Crop</button>
-    </form>
+    <div class="container">
 
-    {% if crop_result %}
-    <div class="result">
-        <strong>Result:</strong> {{ crop_result }}
+        <!-- Crop Recommendation Card -->
+        <div class="card">
+            <h2>🌾 Crop Recommendation</h2>
+            <form method="post" action="/predict_crop">
+                <input type="number" name="N" placeholder="Nitrogen (N)" required>
+                <input type="number" name="P" placeholder="Phosphorus (P)" required>
+                <input type="number" name="K" placeholder="Potassium (K)" required>
+                <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
+                <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
+                <input type="number" step="any" name="ph" placeholder="Soil pH Value" required>
+                <input type="number" step="any" name="rain" placeholder="Rainfall (mm)" required>
+                <button type="submit">Predict Crop</button>
+            </form>
+
+            {% if crop_result %}
+            <div class="result">
+                <strong>Recommended Crop:</strong> {{ crop_result }}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Fertilizer Recommendation Card -->
+        <div class="card">
+            <h2>🧪 Fertilizer Recommendation</h2>
+            <form method="post" action="/predict_fertilizer">
+                <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
+                <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
+                <input type="number" step="any" name="mois" placeholder="Moisture (%)" required>
+                <input type="number" name="soil" placeholder="Soil Type (Encoded)" required>
+                <input type="number" name="crop" placeholder="Crop Type (Encoded)" required>
+                <input type="number" name="N" placeholder="Nitrogen (N)" required>
+                <input type="number" name="K" placeholder="Potassium (K)" required>
+                <input type="number" name="P" placeholder="Phosphorus (P)" required>
+                <button type="submit">Predict Fertilizer</button>
+            </form>
+
+            {% if fert_result %}
+            <div class="result">
+                <strong>Recommended Fertilizer:</strong> {{ fert_result }}
+            </div>
+            {% endif %}
+        </div>
+
     </div>
-    {% endif %}
-
-    <!-- Fertilizer Recommendation Form -->
-    <form method="post" action="/predict_fertilizer">
-        <h2>🧪 Fertilizer Recommendation</h2>
-        <input type="number" step="any" name="temp" placeholder="Temperature (°C)" required>
-        <input type="number" step="any" name="hum" placeholder="Humidity (%)" required>
-        <input type="number" step="any" name="mois" placeholder="Moisture (%)" required>
-        <input type="number" name="soil" placeholder="Soil Type (Encoded)" required>
-        <input type="number" name="crop" placeholder="Crop Type (Encoded)" required>
-        <input type="number" name="N" placeholder="Nitrogen (N)" required>
-        <input type="number" name="K" placeholder="Potassium (K)" required>
-        <input type="number" name="P" placeholder="Phosphorus (P)" required><br>
-        <button type="submit">Predict Fertilizer</button>
-    </form>
-
-    {% if fert_result %}
-    <div class="result">
-        <strong>Result:</strong> {{ fert_result }}
-    </div>
-    {% endif %}
 
 </body>
 </html>
